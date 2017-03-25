@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Karla:400,400i,700,700i');
+
+html{
+    font-family: 'Karla', sans-serif;
+    font-size: 14px;
+    color: $dkgrey;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, p {
+    margin: 0;
+    padding: 0;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+a{
+    transition: color 0.3s;
+    color: $blue;
+    text-decoration: none;
+}
+
+.Text{
+    //  sizes
+    &__size1{
+        // 35 px
+        font-size: 2.333333rem;
+    }
+
+    &__size2{
+        // 20 px
+        font-size: 1.333333rem;
+    }
+
+    &__size3{
+        // 18 px
+        font-size: 1.2rem;
+    }
+
+    &__size4{
+        // 15 px
+        font-size: 1rem;
+    }
+    
+    // weights
+    &__bold{
+        font-weight: 700;
+    }
+
+    &__reg{
+        font-weight: 400;
+    }
+        
+    &__italic{
+        font-style: italic;
+    }
+
+    // alignment
+    &__center{
+        text-align: center;
+    }
+    
+    &__right{
+        text-align: right;
+    }
+    
+    &__left{
+        text-align: left;
+    }
+
+    &__colorWarn{
+        color: $red;
+        
+        a{
+            color: $red;
+        }
+    }
+    
+    &__colorYellow{
+        color: $yellow;
+        
+        a{
+            color: $yellow;
+        }
+    }
+    
+    &__colorDkGrey{
+        color: $dkgrey;
+    }
+}
+
+.Link{
+    font-weight: 600;
+    cursor: pointer;
+
+    &__underline{
+        text-decoration: underline;
+    }
+}
+
+.Nav__MainLink{
+
+    &.active{
+        font-weight: 700;
+    }
+}

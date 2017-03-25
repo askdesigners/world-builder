@@ -1,0 +1,55 @@
+@import 'vars';
+
+:host{
+    display: block;
+    width: 20px;
+    height: 20px;
+    font-size: 0.5rem;
+    line-height: 0.5rem;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+
+    .Map__CellInner{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+:host.tiny{
+    width: 10px;
+    height: 10px;
+    font-size: 0.2rem;
+    line-height: 10px;
+
+    .Key{
+        display: none;
+    }
+
+    .Map__CellInner{
+        width: 10px;
+        height: 10px;
+    }
+}
+
+.Indicator{
+    height: 4px;
+    width: 4px;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.Indicator__Description{
+    background: $blue;
+}
+
+.Indicator__Name{
+    background: $green;
+}
+
+.Indicator__DescriptiveName{
+    background: $red;
+}
+

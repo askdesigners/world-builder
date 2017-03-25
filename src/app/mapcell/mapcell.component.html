@@ -1,0 +1,11 @@
+<span 
+  class="Map__CellInner"
+  [ngClass]="{'blockToN': cellData.n, 'blockToS': cellData.s, 'blockToE': cellData.e, 'blockToW': cellData.w, 'cellSelected': selected}"
+  (click)="select()">
+  <div>
+    <span class="Indicator Indicator__Name" *ngIf="cellData.name != ''"></span>
+    <span class="Indicator Indicator__DescriptiveName" *ngIf="cellData.descriptiveName != ''"></span>
+    <span class="Indicator Indicator__Description" *ngIf="cellData.description != ''"></span>
+  </div>
+  <span class="Key">{{key}}</span>
+</span>

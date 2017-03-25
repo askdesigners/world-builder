@@ -1,0 +1,275 @@
+// Dev
+
+.devNav{
+    position: absolute;
+    bottom: 0;
+    display: none;
+}
+
+// Padding
+
+.padTop15{
+    padding-top: 1rem;
+}
+
+.padBottom15{
+    padding-bottom: 1rem;
+}
+
+.padLeft15{
+    padding-left: 1rem;
+}
+
+.padRight15{
+    padding-right: 1rem;
+}
+
+.padSides10{
+    padding-left:0.666666rem;
+    padding-right: 0.666666rem;
+}
+
+.padTopBottom10{
+    padding-top: 0.666666rem;
+    padding-bottom: 0.666666rem;
+}
+
+.padTop10{
+    padding-top: 0.666666rem;
+}
+
+.padSides15{
+    padding-left:1rem;
+    padding-right: 1rem;
+}
+
+.padTopBottom15{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+
+// Margins
+
+.marginTop5{
+    margin-top: 0.333333rem;
+}
+
+.marginRight5{
+    margin-right: 0.333333rem;
+}
+
+.marginTop10{
+    margin-top: 0.666666rem;
+}
+
+.marginBottom10{
+    margin-bottom: 0.666666rem;
+}
+
+.marginRight10{
+    margin-right: 0.666666rem;
+}
+
+.marginLeft10{
+    margin-left: 0.666666rem;
+}
+
+.marginTop15{
+    margin-top: 1rem;
+}
+
+.marginRight15{
+    margin-right: 1rem;
+}
+
+.marginLeft15{
+    margin-left: 1rem;
+}
+
+.marginTop30{
+    margin-top: 2rem;
+}
+
+// Display
+
+.flex{
+    display: flex;
+}
+
+.flexRow{
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.flexEnd{
+    justify-content: flex-end;
+}
+
+.flexStart{
+    justify-content: flex-start;
+}
+
+.flexNoStretch{
+    align-items: center;
+} 
+
+.flexGrow1{
+    flex-grow: 1;
+}
+
+.flexGrow2{
+    flex-grow: 2;
+}
+
+.flexCenterSelf{
+    align-self: center;
+}
+
+.flexEndSelf{
+    margin-left: auto;
+}
+
+.Grid{
+    display: grid;
+    grid-gap: 1rem;
+
+    &__2col{
+        grid-template-columns: 1fr 1fr;
+        justify-items: stretch;
+    }
+
+}
+
+.GridItem{
+
+    &__col1{
+        grid-column: 1 / 2;
+    }
+
+    &__col2{
+        grid-column: 2 / 3;
+    }
+
+    &__row1{
+        grid-row: 1 / 3;
+    }
+
+}
+
+// % Cols
+
+.col{
+    &__2{
+        width: 2 * $col;
+    }
+    &__3{
+        width: 3 * $col;
+    }
+    &__4{
+        width: 4 * $col;
+    }
+    &__6{
+        width: 6 * $col;
+    }
+}
+
+.appWidth{
+    min-width: 1000px;
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.Nav{}
+
+.Nav__Main{
+    padding: 5px;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    border-bottom: 1px solid $blue;
+}
+
+.Page{
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    max-width: 100vw;
+    max-height: calc(100vh - 27px);
+}
+
+
+.Map{
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid $dkblue;
+}
+
+.Map__ScrollWrapper{
+    overflow: scroll;
+    flex-grow: 2;
+    padding: 1rem;
+}
+
+.Map__Wrapper{
+    width: 1500px;
+    height: 1000px;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.Map__Row{
+    border-collapse: collapse;
+}
+
+.Map__Cell{
+    border-collapse: collapse;
+    height: 20px;
+    width: 20px;
+    border: 1px solid $ltgrey;
+    color: $ltgrey;
+    transition: color 0.2s;
+    padding: 0;
+
+    &:hover{
+        color: $dkgrey;
+    }
+
+    &.tiny{
+        height: 10px;
+        width: 10px;
+    }
+}
+
+.Map__CellInner{
+    display: block;
+    height: 20px;
+    width: 20px;
+
+    &.blockTo{
+        &N{
+            border-top: 1px solid $dkblue;
+        }
+        &S{
+            border-bottom: 1px solid $dkblue;
+        }
+        &E{
+            border-right: 1px solid $dkblue;
+        }
+        &W{
+            border-left: 1px solid $dkblue;
+        }
+    }
+
+    &.cellSelected{
+        background: $ltblue;
+    }
+}
+
+.Map__DescriptionEditor{
+    border: $ltblue;
+    box-shadow: 0px -2px 4px rgba(0,0,0,0.3);
+    width: 300px;
+    flex: 0 0 300px;
+}

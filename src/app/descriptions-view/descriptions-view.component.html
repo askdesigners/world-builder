@@ -1,0 +1,34 @@
+<nav class="Nav Nav__Main">
+  <a routerLink="/" routerLinkActive="active" class="Nav__MainLink marginRight15">map</a>
+  <input type="checkbox" class="Input Input__Checkbox " [(ngModel)]="isTiny" (ngModelChange)="updateTiny(isTiny)" /> Tiny
+</nav>
+<section class="Page">
+  <section class="Map__ScrollWrapper">
+    <table class="Map">
+      <tbody class="Map__Wrapper">
+        <tr class="Map__Row" *ngFor="let row of rows; let hI = index">
+          <td class="Map__Cell" *ngFor="let cell of row; let wI = index" [ngClass]="{'tiny':isTiny}">
+            <app-mapcell [ngClass]="{'tiny':isTiny}" (cellSelected)="catchSelection($event)" [selectedCell]="selected" [cellData]="cell"></app-mapcell>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <section class="Map__DescriptionEditor padSides15 padTopBottom15">
+    <h1 class="Text__bold marginBottom15 padBottom15">Cell: {{selectedObject.key}}</h1>
+    <div class="FormRow">
+      <input type="text" class="Input Input__text" [(ngModel)]="selectedObject.name" placeholder="Name"/>
+    </div>
+    <div class="FormRow">
+      <input type="text" class="Input Input__text" [(ngModel)]="selectedObject.descriptiveName" placeholder="Descriptive name"/>
+    </div>
+    <div class="FormRow">
+      <textarea id="" cols="30" rows="10" class="Input Input__textarea" [(ngModel)]="selectedObject.description">
+        Location Description
+      </textarea>
+    </div>
+    <div class="FormRow">
+      <a class="Button Button__Primary" (click)="updateCell()">Update</a>
+    </div>
+  </section>
+</section>

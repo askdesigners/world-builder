@@ -20,10 +20,16 @@ export class DescriptionsViewComponent implements OnInit {
   constructor(
     private datalayer: DatalayerService,
     private _ngZone: NgZone
-  ) { }
+  ) {
+    datalayer.selectionChange$.subscribe(key => this.setSelectedObjectData(key));
+  }
 
   ngOnInit() {
-    this.rows = this.datalayer.arrayMap;
+    this.linkMap(this.datalayer.arrayMap);
+  }
+
+  linkMap(data){
+    this.rows = data;
   }
 
   updateTiny(change) {
@@ -33,33 +39,26 @@ export class DescriptionsViewComponent implements OnInit {
   }
 
   updateCell() {
-    console.log(this.selectedObject)
-    this.datalayer.saveCell(this.selected, this.selectedObject);
+    this.datalayer.saveCell(this.datalayer.selectedCell, this.selectedObject);
   }
 
-  catchSelection(evt) {
-    this.setSelection(evt.key);
-  }
-
-  setSelection(key) {
+  setSelectedObjectData(key) {
     this._ngZone.run(() => {
-      this.selected = key;
-      this.selectedObject = this.datalayer.keyMap[key];
-      console.log(this.selectedObject)
+      this.selectedObject = Object.assign({},this.datalayer.keyMap[key]);
     });
   }
 
   moveSelection(x, y) {
-    if (this.selected == undefined) this.selected = '1-1';
-    let pos = this.selected.split('-');
+    if (this.datalayer.selectedCell == undefined) this.datalayer.selectedCell = '1-1';
+    let pos = this.datalayer.selectedCell.split('-');
     pos[0] = parseInt(pos[0], 10) + x;
     pos[1] = parseInt(pos[1], 10) + y;
-    this.setSelection(pos.join('-'));
+    this.datalayer.updateSelection(pos.join('-'));
   }
 
   setBlockedDirection(dir) {
     this._ngZone.run(() => {
-      this.datalayer.updatedBlocked(this.selected, dir);
+      this.datalayer.updatedBlocked(this.datalayer.selectedCell, dir);
     });
   }
 

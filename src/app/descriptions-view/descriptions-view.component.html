@@ -8,7 +8,7 @@
       <tbody class="Map__Wrapper">
         <tr class="Map__Row" *ngFor="let row of rows; let hI = index">
           <td class="Map__Cell" *ngFor="let cell of row; let wI = index" [ngClass]="{'tiny':isTiny}">
-            <app-mapcell [ngClass]="{'tiny':isTiny}" (cellSelected)="catchSelection($event)" [selectedCell]="selected" [cellData]="cell"></app-mapcell>
+            <app-mapcell [ngClass]="{'tiny':isTiny}" [cellData]="cell"></app-mapcell>
           </td>
         </tr>
       </tbody>
@@ -17,6 +17,7 @@
   <section class="Map__DescriptionEditor padSides15 padTopBottom15">
     <h1 class="Text__bold marginBottom15 padBottom15">Cell: {{selectedObject.key}}</h1>
     <div class="FormRow">
+      {{selectedObject.name}}
       <input type="text" class="Input Input__text" [(ngModel)]="selectedObject.name" placeholder="Name"/>
     </div>
     <div class="FormRow">

@@ -1,14 +1,23 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable()
 export class DatalayerService {
 
   public dimensions: number[];
+  public selectedCell: String = '';
   public keyMap: any = {};
   public arrayMap: object[] = [];
 
+  public selectionChange$: EventEmitter<any>;
+  public dataChange$: EventEmitter<any>;
+  public changedKey$: EventEmitter<any>;
+
   constructor() { 
     this.dimensions = [66,50];
+
+    this.selectionChange$ = new EventEmitter();
+    this.dataChange$ = new EventEmitter();
+    this.changedKey$ = new EventEmitter();
 
     this.initMap();
   }
@@ -17,18 +26,26 @@ export class DatalayerService {
     // eventually load this from electron json file
   }
 
-  saveCell(key, data){
-    console.log(key, data);
+  updateSelection(key){
+    console.log('update selection in service');
+    this.selectedCell = key;
+    this.selectionChange$.emit(this.selectedCell);
+  }
 
+  saveCell(key, data){
+    console.log('save selection in service:', key, data);
+    
     this.keyMap[key] = Object.assign(this.keyMap[key], data);
-    this.buildArrays();
+    this.changedKey$.emit({key, data: this.keyMap[key]});
+    // this.buildArrays();
     //  update back into electron
 
   }
 
   updatedBlocked(key, dir){
     this.keyMap[key][dir] = !this.keyMap[key][dir];
-    this.buildArrays();
+    this.changedKey$.emit({key, data: this.keyMap[key]});
+    // this.buildArrays();
     //  update back into electron
 
   }
@@ -58,7 +75,7 @@ export class DatalayerService {
   }
 
   buildArrays(){
-    console.log('reuilding');
+    console.log('building');
     let rows = Array.apply(null, {length: this.dimensions[1]}).map(()=>[]);
     let cols = Array.apply(null, {length: this.dimensions[0]}).map(()=>[]);
 

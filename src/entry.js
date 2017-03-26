@@ -1,10 +1,12 @@
-const {app, BrowserWindow} = require('electron')
+const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 const url = require('url')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
+
+console.log('scrript') 
 
 function createWindow () {
   // Create the browser window.
@@ -51,6 +53,17 @@ app.on('activate', () => {
     createWindow()
   }
 })
+
+ipcMain.on('updatemap', (event, arg) => {  
+    console.log('data for update:', arg);
+});
+
+ipcMain.on('getmap', (event, arg) => {  
+  console.log('sending map');
+    event.sender.send('getmap-reply', { '1-1':{}});
+});
+
+
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.

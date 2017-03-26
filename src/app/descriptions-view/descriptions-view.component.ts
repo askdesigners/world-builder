@@ -21,7 +21,8 @@ export class DescriptionsViewComponent implements OnInit {
     private datalayer: DatalayerService,
     private _ngZone: NgZone
   ) {
-    datalayer.selectionChange$.subscribe(key => this.setSelectedObjectData(key));
+    this.datalayer.selectionChange$.subscribe(key => this.setSelectedObjectData(key));
+    this.datalayer.mapReady$.subscribe(mapArray => this.linkMap(mapArray))
   }
 
   ngOnInit() {
@@ -29,7 +30,10 @@ export class DescriptionsViewComponent implements OnInit {
   }
 
   linkMap(data){
-    this.rows = data;
+    console.log('linking data', data);
+    this._ngZone.run(() => {
+      this.rows = data;
+    });
   }
 
   updateTiny(change) {

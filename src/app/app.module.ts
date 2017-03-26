@@ -11,6 +11,8 @@ import { SetupService } from './service-setup/setup.service';
 import { DatalayerService } from './datalayer/datalayer.service';
 import { DescriptionsViewComponent } from './descriptions-view/descriptions-view.component';
 
+import {NgxElectronModule} from 'ngx-electron';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +23,7 @@ import { DescriptionsViewComponent } from './descriptions-view/descriptions-view
     BrowserModule,
     FormsModule,
     HttpModule,
+    NgxElectronModule,
     RouterModule.forRoot([
       {
         path: '',

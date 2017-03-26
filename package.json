@@ -1,12 +1,12 @@
 {
-  "name": "angular-2-electron-seed",
+  "name": "world-builder",
   "version": "0.0.0",
   "license": "MIT",
   "main": "dist/entry.js",
   "angular-cli": {},
   "scripts": {
     "postinstall": "cpx webpack-build-common.js node_modules/angular-cli/models && cpx webpack-build-test.js node_modules/angular-cli/models",
-    "build": "ng build",
+    "build": "ng build && cp src/entry.js dist/entry.js",
     "build:prod": "ng build --prod",
     "run": "electron .",
     "start": "concurrently \"ng serve\" \"electron src/entry.live.js\"",
